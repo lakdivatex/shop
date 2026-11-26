@@ -1,0 +1,191 @@
+/* ==========================================================
+   LAKDIVA TEX – reusable components
+   (buttons, glass cards, floating tags, chips, badges)
+   ========================================================== */
+
+/* ---------- Glass surface ---------- */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  --btn-bg: var(--surface);
+  --btn-fg: var(--indigo);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--r-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), filter var(--t-fast);
+}
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn svg { width: 1.15em; height: 1.15em; flex: none; }
+
+.btn--primary { --btn-fg: #fff; background: var(--grad-brand); box-shadow: var(--shadow-glow); }
+.btn--primary:hover { filter: brightness(1.06); box-shadow: 0 22px 44px -10px rgba(68, 81, 190, 0.65); }
+
+.btn--whatsapp { --btn-fg: #fff; background: var(--grad-whatsapp); box-shadow: 0 16px 34px -10px rgba(25, 180, 99, 0.6); }
+.btn--whatsapp:hover { filter: brightness(1.05); }
+
+.btn--ghost { background: rgba(255, 255, 255, 0.45); border: 1px solid var(--glass-border); box-shadow: none; }
+
+.btn--sm { min-height: 40px; padding: 0.55rem 1.05rem; font-size: 0.85rem; }
+.btn--block { width: 100%; }
+
+/* Square rounded icon button (search / basket in the header) */
+.icon-btn {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--navy);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast);
+}
+.icon-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.icon-btn svg { width: 22px; height: 22px; }
+.icon-btn--brand { background: var(--grad-brand); color: #fff; box-shadow: var(--shadow-glow); }
+
+/* Little count bubble on the basket button */
+.count-bubble {
+  position: absolute;
+  top: -6px; right: -6px;
+  min-width: 20px; height: 20px;
+  padding: 0 5px;
+  display: grid; place-items: center;
+  border-radius: var(--r-pill);
+  background: var(--mint);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.count-bubble[hidden] { display: none; }
+
+/* Big round call-to-action (like the "ADD TO CART" orb) */
+.round-cta {
+  display: inline-grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.35rem;
+  width: clamp(104px, 12vw, 138px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #8f9bff 0%, #4451be 70%);
+  color: #fff;
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.55), var(--shadow-glow);
+  transition: transform var(--t-med) var(--ease);
+}
+.round-cta:hover { transform: scale(1.06) rotate(-3deg); }
+.round-cta svg { width: 26px; height: 26px; }
+
+/* ---------- Floating label (glass tag with dot) ---------- */
+.tag {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.7rem 1rem 0.7rem 1.9rem;
+  position: relative;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-small);
+  line-height: 1.25;
+}
+.tag::before {
+  content: "";
+  position: absolute;
+  left: 0.8rem; top: 0.95rem;
+  width: 0.6rem; height: 0.6rem;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 4px rgba(25, 194, 125, 0.2);
+}
+.tag small {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+.tag strong { font-weight: 800; color: var(--navy); }
+
+/* ---------- Pills, chips, badges ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-tiny);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--glass-border);
+}
+
+/* Category filter chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--glass-border);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  transition: all var(--t-fast) var(--ease);
+}
+.chip:hover { color: var(--navy); transform: translateY(-1px); }
+.chip[aria-pressed="true"],
+.chip.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--r-pill);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--mint-100);
+  color: #0c7c50;
+}
+.badge--indigo { background: var(--indigo-100); color: var(--indigo); }
+
+/* Category tints (used for product card backgrounds) */
+.tint-trousers { background: linear-gradient(160deg, #e2faf5 0%, var(--aqua) 100%); }
+.tint-blouses  { background: linear-gradient(160deg, #fff0f6 0%, var(--blush) 100%); }
+.tint-crop-tops { background: linear-gradient(160deg, #fff4ec 0%, var(--peach) 100%); }
+.tint-skirts   { background: linear-gradient(160deg, #f1ecff 0%, var(--lilac) 100%); }

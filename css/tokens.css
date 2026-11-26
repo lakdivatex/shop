@@ -1,0 +1,85 @@
+/* ==========================================================
+   LAKDIVA TEX – design tokens
+   Colours come straight from the logo (navy #1f2447, indigo #4451be)
+   plus the fresh mint / pastel glow used in the reference design.
+   Change a value here and the whole site updates.
+   ========================================================== */
+:root {
+  /* Brand */
+  --navy: #1f2447;
+  --navy-700: #2d3463;
+  --indigo: #4451be;
+  --indigo-500: #5b6bff;
+  --indigo-300: #a8b0fb;
+  --indigo-100: #e7eaff;
+  --indigo-50: #f3f4ff;
+
+  /* Fresh accents */
+  --mint: #19c27d;
+  --mint-300: #6fe3b4;
+  --mint-100: #d9f7ea;
+  --lime: #8ef59a;
+
+  /* Soft pastels – one per category (also used for card tints) */
+  --blush: #ffdbe8;   /* blouses   */
+  --peach: #ffe3d1;   /* crop tops */
+  --lilac: #e6deff;   /* skirts    */
+  --aqua: #d3f4ee;    /* trousers  */
+
+  /* Text */
+  --ink: #1f2447;
+  --ink-soft: #565c82;
+  --ink-faint: #8c91ae;
+
+  /* Surfaces */
+  --bg: #f5f6ff;
+  --surface: #ffffff;
+  --line: rgba(31, 36, 71, 0.1);
+
+  /* Gradients */
+  --grad-brand: linear-gradient(135deg, #7a87ff 0%, #4451be 100%);
+  --grad-accent: linear-gradient(95deg, #3fe0a0 0%, #4f7cff 62%, #7a5cff 100%);
+  --grad-mint: linear-gradient(135deg, #c4f5e2 0%, #9fe3cf 100%);
+  --grad-whatsapp: linear-gradient(135deg, #3fe07f 0%, #19b463 100%);
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-blur: blur(14px) saturate(1.5);
+
+  /* Radius */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --r-xl: 40px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 14px -6px rgba(31, 36, 71, 0.18);
+  --shadow-md: 0 14px 34px -14px rgba(31, 36, 71, 0.28);
+  --shadow-lg: 0 30px 60px -24px rgba(31, 36, 71, 0.35);
+  --shadow-glow: 0 18px 40px -10px rgba(68, 81, 190, 0.55);
+
+  /* Type */
+  --font-display: "Anton", "Archivo Narrow", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --fs-display: clamp(3.4rem, 11.5vw, 9.5rem);
+  --fs-h1: clamp(2.6rem, 6vw, 5rem);
+  --fs-h2: clamp(2.1rem, 4.6vw, 3.75rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.6rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-tiny: 0.75rem;
+
+  /* Layout */
+  --container: 1240px;
+  --gutter: clamp(1rem, 3vw, 2.25rem);
+  --header-h: 76px;
+  --section-y: clamp(4rem, 9vw, 7.5rem);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.8, 0.28, 1);
+  --t-fast: 160ms;
+  --t-med: 320ms;
+}
