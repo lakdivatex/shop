@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LAKDIVA TEX Clothing – Trousers, Blouses, Crop Tops &amp; Skirts</title>
   <meta name="description" content="Modern women's and girls' clothing – trousers, blouses, crop tops and skirts. Pick your favourites and order easily on WhatsApp.">
-  <meta name="theme-color" content="#f5f6ff">
+  <meta name="theme-color" content="#faf8f4">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Fonts: Anton (big headlines) + Plus Jakarta Sans (body) -->
@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <link rel="preload" as="image" href="assets/products/blouse-mustard.webp" type="image/webp">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -30,6 +31,11 @@
       <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm5.8 14.05c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12a17 17 0 0 1-1.7-.63c-3-1.3-4.95-4.3-5.1-4.5-.15-.2-1.2-1.6-1.2-3.05s.76-2.16 1.03-2.45c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.5.25.6.85 2.07.92 2.22.08.15.13.33.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.5-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.3 2.38 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.28.1 1.75.82 2.05.97.3.15.5.22.57.35.08.12.08.72-.17 1.4Z"/></symbol>
+      <!-- Category line icons -->
+      <symbol id="c-trousers" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h18l3 36h-9.500L24 21l-2.500 21H12z"/><path d="M15 12h18"/></g></symbol>
+      <symbol id="c-blouses" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7 6 13l4 10 6-2v21h16V21l6 2 4-10-11-6q-7 5-14 0Z"/><path d="M24 12v30"/></g></symbol>
+      <symbol id="c-crop-tops" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11 6 17l4 9 6-2v8h16v-8l6 2 4-9-11-6q-7 5-14 0Z"/></g></symbol>
+      <symbol id="c-skirts" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h14l10 32H7Z"/><path d="M17 13h14M21 13 16 40M27 13l5 27"/></g></symbol>
       <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
     </defs>
   </svg>
@@ -41,7 +47,7 @@
         <img src="assets/logo.svg" alt="LAKDIVA TEX Clothing" width="169" height="46">
       </a>
 
-      <nav class="nav glass" id="site-nav" aria-label="Main menu">
+      <nav class="nav surface" id="site-nav" aria-label="Main menu">
         <ul>
           <li><a href="#shop" data-category="trousers">Trousers</a></li>
           <li><a href="#shop" data-category="blouses">Blouses</a></li>
@@ -69,56 +75,53 @@
   <main id="main">
 
     <!-- ================= HERO ================= -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" data-theme="mustard" aria-roledescription="carousel" aria-label="New arrivals">
       <div class="container">
         <h1 class="hero__title">
-          <span class="text-gradient">New</span>
+          <span class="hero__new">New</span>
           <span>Season</span>
           <span>Collection</span>
         </h1>
 
         <div class="hero__stage">
 
-          <!-- Feature panel -->
+          <!-- Tinted panel with the text (colour follows the garment shown) -->
           <div class="hero__panel">
             <div class="hero__copy">
-              <span class="pill"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg> New in · Women &amp; Girls</span>
-              <h2>Your everyday edit</h2>
-              <p>Trousers, blouses, crop tops and skirts you'll love wearing. Pick your favourites and order in minutes on WhatsApp.</p>
-              <div class="hero__buttons">
-                <a class="btn" href="#shop">Shop now <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <article class="hero-slide is-active" data-theme="mustard" role="group" aria-roledescription="slide" aria-label="1 of 2">
+                <span class="pill">New in · Blouses</span>
+                <h2>Puff-sleeve blouse</h2>
+                <p>Square neckline, ruched bodice and soft, full sleeves.</p>
+                <a class="btn btn--primary" href="#shop" data-category="blouses">Shop blouses <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </article>
+              <article class="hero-slide" data-theme="taupe" role="group" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true" inert>
+                <span class="pill">New in · Crop tops</span>
+                <h2>Boxy crop tee</h2>
+                <p>A relaxed drop-shoulder fit with a clean, cropped hem.</p>
+                <a class="btn btn--primary" href="#shop" data-category="crop-tops">Shop crop tops <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </article>
+            </div>
+
+            <p class="hero__note"><svg aria-hidden="true"><use href="#i-wa"/></svg> No online payment – you order on WhatsApp</p>
+
+            <div class="hero__controls" role="group" aria-label="Choose a featured item">
+              <button class="hero__arrow hero__arrow--prev" type="button" data-hero-prev aria-label="Previous item"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <div class="hero__dots">
+                <button class="hero__dot" type="button" aria-label="Show item 1" aria-current="true"></button>
+                <button class="hero__dot" type="button" aria-label="Show item 2" aria-current="false"></button>
               </div>
-              <p class="hero__note"><svg aria-hidden="true"><use href="#i-wa"/></svg> No online payment – you order on WhatsApp</p>
+              <button class="hero__arrow hero__arrow--next" type="button" data-hero-next aria-label="Next item"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
             </div>
           </div>
 
-          <!-- Hanging garments + floating labels (decorative) -->
+          <!-- Model photos (transparent cut-outs) + info labels -->
           <div class="hero__art">
-            <div class="rail" aria-hidden="true">
-              <span class="rail__bar"></span>
-              <div class="rail__items">
-                <div class="hang">
-                  <svg class="hanger"><use href="#hanger"/></svg>
-                  <svg class="garment garment--blouse"><use href="#g-blouse"/></svg>
-                </div>
-                <div class="hang">
-                  <svg class="hanger"><use href="#hanger"/></svg>
-                  <svg class="garment garment--crop-tops"><use href="#g-crop-tops"/></svg>
-                </div>
-                <div class="hang">
-                  <svg class="hanger"><use href="#hanger"/></svg>
-                  <svg class="garment garment--trousers"><use href="#g-trousers"/></svg>
-                </div>
-                <div class="hang">
-                  <svg class="hanger"><use href="#hanger"/></svg>
-                  <svg class="garment garment--skirts"><use href="#g-skirts"/></svg>
-                </div>
-              </div>
-            </div>
+            <img class="hero__photo is-active" src="assets/products/blouse-mustard.webp" width="769" height="1100" style="--ar:0.699" alt="Model wearing a mustard puff-sleeve blouse with high-waist blue jeans" fetchpriority="high" decoding="async">
+            <img class="hero__photo" src="assets/products/crop-tee-taupe.webp" width="942" height="1100" style="--ar:0.856" alt="Model wearing a grey boxy crop tee with white jeans" decoding="async">
 
-            <div class="tag tag--a glass" aria-hidden="true"><small>Sizes</small><strong>XS – XL</strong></div>
-            <div class="tag tag--b glass" aria-hidden="true"><small>For</small><strong>Women &amp; girls</strong></div>
-            <div class="tag tag--c glass" aria-hidden="true"><small>Order</small><strong>Simple, on WhatsApp</strong></div>
+            <div class="tag tag--a surface" aria-hidden="true"><small>Sizes</small><strong>XS – XL</strong></div>
+            <div class="tag tag--b surface" aria-hidden="true"><small>For</small><strong>Women &amp; girls</strong></div>
+            <div class="tag tag--c surface" aria-hidden="true"><small>Order</small><strong>Simple, on WhatsApp</strong></div>
 
             <a class="round-cta" href="#shop" aria-label="Shop the collection">
               <svg aria-hidden="true"><use href="#i-bag"/></svg>
@@ -128,10 +131,10 @@
 
           <!-- Category shortcuts (filtering is wired up in Step 3) -->
           <nav class="hero__tiles" aria-label="Shop by category">
-            <a class="tile tint-trousers"  href="#shop" data-category="trousers"><svg aria-hidden="true"><use href="#g-trousers"/></svg><span>Trousers</span></a>
-            <a class="tile tint-blouses"   href="#shop" data-category="blouses"><svg aria-hidden="true"><use href="#g-blouse"/></svg><span>Blouses</span></a>
-            <a class="tile tint-crop-tops" href="#shop" data-category="crop-tops"><svg aria-hidden="true"><use href="#g-crop-tops"/></svg><span>Crop Tops</span></a>
-            <a class="tile tint-skirts"    href="#shop" data-category="skirts"><svg aria-hidden="true"><use href="#g-skirts"/></svg><span>Skirts</span></a>
+            <a class="tile tint-trousers"  href="#shop" data-category="trousers"><svg aria-hidden="true"><use href="#c-trousers"/></svg><span>Trousers</span></a>
+            <a class="tile tint-blouses"   href="#shop" data-category="blouses"><svg aria-hidden="true"><use href="#c-blouses"/></svg><span>Blouses</span></a>
+            <a class="tile tint-crop-tops" href="#shop" data-category="crop-tops"><svg aria-hidden="true"><use href="#c-crop-tops"/></svg><span>Crop Tops</span></a>
+            <a class="tile tint-skirts"    href="#shop" data-category="skirts"><svg aria-hidden="true"><use href="#c-skirts"/></svg><span>Skirts</span></a>
           </nav>
 
         </div>
@@ -154,5 +157,6 @@
   <script src="data/products.js"></script>
   <script src="js/art.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/hero.js"></script>
 </body>
 </html>

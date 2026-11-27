@@ -1,7 +1,8 @@
 /* ==========================================================
    LAKDIVA TEX – product list
    Add a product = copy one block, change the details, save.
-   (Sample items below – replace names, prices and photos with your own.)
+   (Items below: the blouse and crop tee use your real photos; names/prices/sizes
+   are still samples – replace them with your own.)
 
    Fields
    id        unique code, no spaces            e.g. "TRS-001"
@@ -45,25 +46,25 @@ window.LAKDIVA_PRODUCTS = [
     category: "blouses",
     price: 3200,
     sizes: ["XS", "S", "M", "L"],
-    colors: [{ name: "Blush", hex: "#f7b8cf" }, { name: "White", hex: "#ffffff" }],
-    image: "",
-    badge: "Best seller",
-    fabric: "Light cotton poplin",
-    fit: "Relaxed, gathered sleeves",
-    blurb: "A soft, feminine blouse for work or weekends."
+    colors: [{ name: "Mustard", hex: "#eba705" }],
+    image: "assets/products/blouse-mustard.webp",
+    badge: "New",
+    fabric: "",
+    fit: "Square neck, ruched bodice, full sleeves",
+    blurb: "Square neckline, ruched bodice and soft, full sleeves."
   },
   {
     id: "CRP-001",
-    name: "Ribbed Crop Top",
+    name: "Boxy Crop Tee",
     category: "crop-tops",
     price: 2200,
     sizes: ["XS", "S", "M", "L"],
-    colors: [{ name: "Peach", hex: "#ffc7a6" }, { name: "Lilac", hex: "#c9b8ff" }, { name: "Black", hex: "#1f2447" }],
-    image: "",
-    badge: "",
-    fabric: "Stretch rib cotton",
-    fit: "Fitted, cropped length",
-    blurb: "Stretchy everyday crop top that pairs with anything."
+    colors: [{ name: "Taupe", hex: "#a49a8e" }],
+    image: "assets/products/crop-tee-taupe.webp",
+    badge: "New",
+    fabric: "",
+    fit: "Relaxed drop-shoulder, cropped hem",
+    blurb: "A relaxed drop-shoulder fit with a clean, cropped hem."
   },
   {
     id: "SKT-001",

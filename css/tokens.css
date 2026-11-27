@@ -1,73 +1,64 @@
 /* ==========================================================
    LAKDIVA TEX – design tokens
-   Colours come straight from the logo (navy #1f2447, indigo #4451be)
-   plus the fresh mint / pastel glow used in the reference design.
+   Palette comes from the garments and the logo:
+   mustard blouse  ->  --mustard
+   taupe crop tee  ->  --taupe
+   blue denim      ->  --denim
+   logo navy       ->  --navy   (main text + buttons)
    Change a value here and the whole site updates.
    ========================================================== */
 :root {
-  /* Brand */
+  /* Brand (from the logo) */
   --navy: #1f2447;
   --navy-700: #2d3463;
   --indigo: #4451be;
-  --indigo-500: #5b6bff;
-  --indigo-300: #a8b0fb;
-  --indigo-100: #e7eaff;
-  --indigo-50: #f3f4ff;
+  --indigo-100: #e8eafb;
 
-  /* Fresh accents */
-  --mint: #19c27d;
-  --mint-300: #6fe3b4;
-  --mint-100: #d9f7ea;
-  --lime: #8ef59a;
-
-  /* Soft pastels – one per category (also used for card tints) */
-  --blush: #ffdbe8;   /* blouses   */
-  --peach: #ffe3d1;   /* crop tops */
-  --lilac: #e6deff;   /* skirts    */
-  --aqua: #d3f4ee;    /* trousers  */
+  /* Garment colours */
+  --mustard: #eba705;
+  --mustard-deep: #a87400;     /* readable on light backgrounds */
+  --mustard-100: #f9ebc3;
+  --mustard-50: #fdf6e0;
+  --taupe: #a49a8e;
+  --taupe-deep: #6f655b;
+  --taupe-100: #e9e4dd;
+  --denim: #5b84b6;
+  --denim-100: #dce6f2;
+  --rose-100: #efe3dd;
 
   /* Text */
   --ink: #1f2447;
-  --ink-soft: #565c82;
-  --ink-faint: #8c91ae;
+  --ink-soft: #575b78;
+  --ink-faint: #8a8da1;
 
   /* Surfaces */
-  --bg: #f5f6ff;
+  --bg: #faf8f4;
+  --sand: #f2eee7;
   --surface: #ffffff;
-  --line: rgba(31, 36, 71, 0.1);
+  --line: rgba(31, 36, 71, 0.12);
 
-  /* Gradients */
-  --grad-brand: linear-gradient(135deg, #7a87ff 0%, #4451be 100%);
-  --grad-accent: linear-gradient(95deg, #3fe0a0 0%, #4f7cff 62%, #7a5cff 100%);
-  --grad-mint: linear-gradient(135deg, #c4f5e2 0%, #9fe3cf 100%);
-  --grad-whatsapp: linear-gradient(135deg, #3fe07f 0%, #19b463 100%);
-
-  /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.62);
-  --glass-border: rgba(255, 255, 255, 0.75);
-  --glass-blur: blur(14px) saturate(1.5);
+  /* WhatsApp (used only for order / chat buttons) */
+  --wa: #127a3c;
+  --wa-hover: #0e6732;
 
   /* Radius */
-  --r-sm: 12px;
-  --r-md: 18px;
-  --r-lg: 28px;
-  --r-xl: 40px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
   --r-pill: 999px;
 
-  /* Shadows */
-  --shadow-sm: 0 4px 14px -6px rgba(31, 36, 71, 0.18);
-  --shadow-md: 0 14px 34px -14px rgba(31, 36, 71, 0.28);
-  --shadow-lg: 0 30px 60px -24px rgba(31, 36, 71, 0.35);
-  --shadow-glow: 0 18px 40px -10px rgba(68, 81, 190, 0.55);
+  /* Shadows – soft and quiet */
+  --shadow-sm: 0 1px 2px rgba(31, 36, 71, 0.06), 0 2px 8px -2px rgba(31, 36, 71, 0.08);
+  --shadow-md: 0 10px 28px -12px rgba(31, 36, 71, 0.22);
+  --shadow-lg: 0 24px 50px -22px rgba(31, 36, 71, 0.3);
 
   /* Type */
   --font-display: "Anton", "Archivo Narrow", "Arial Narrow", Impact, sans-serif;
   --font-body: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  --fs-display: clamp(3.4rem, 11.5vw, 9.5rem);
-  --fs-h1: clamp(2.6rem, 6vw, 5rem);
-  --fs-h2: clamp(2.1rem, 4.6vw, 3.75rem);
-  --fs-h3: clamp(1.25rem, 2vw, 1.6rem);
+  --fs-h2: clamp(2.1rem, 4.6vw, 3.5rem);
+  --fs-h3: clamp(1.15rem, 2vw, 1.45rem);
   --fs-body: 1rem;
   --fs-small: 0.875rem;
   --fs-tiny: 0.75rem;
@@ -76,10 +67,10 @@
   --container: 1240px;
   --gutter: clamp(1rem, 3vw, 2.25rem);
   --header-h: 76px;
-  --section-y: clamp(4rem, 9vw, 7.5rem);
+  --section-y: clamp(4rem, 9vw, 7rem);
 
   /* Motion */
   --ease: cubic-bezier(0.22, 0.8, 0.28, 1);
   --t-fast: 160ms;
-  --t-med: 320ms;
+  --t-med: 300ms;
 }

@@ -1,12 +1,22 @@
 /* ==========================================================
    LAKDIVA TEX – hero section
-   Big headline, a rail of hanging garments, a mint feature
-   panel, floating glass labels, a round call-to-action and
-   category shortcuts (inspired by the reference design).
+   Big headline, model photo cut-out, a tinted panel whose
+   colour matches the garment in view, info labels, round
+   button and category shortcuts.
+   Two themes (set by js/hero.js via data-theme on .hero):
+     mustard  -> mustard blouse      taupe -> grey crop tee
    ========================================================== */
 .hero {
+  --panel: #f6e3ae;      /* panel tint behind the model */
+  --deep: #b57f06;       /* "NEW" word colour           */
+  --dot: #eba705;        /* small accent dots           */
   padding-top: clamp(0.5rem, 2vw, 1.25rem);
-  padding-bottom: clamp(3rem, 7vw, 6rem);
+  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+.hero[data-theme="taupe"] {
+  --panel: #e6dfd5;
+  --deep: #6f655b;
+  --dot: #a49a8e;
 }
 
 /* ---------- Headline ---------- */
@@ -18,121 +28,115 @@
   font-size: clamp(3rem, 17vw, 5.5rem);
   line-height: 0.92;
   text-align: center;
-  animation: rise 0.8s var(--ease) both;
 }
+.hero__new { color: var(--deep); transition: color 0.6s var(--ease); }
 @media (min-width: 700px) {
-  .hero__title { font-size: clamp(3.4rem, 10.2vw, 8.9rem); }
+  .hero__title { font-size: clamp(3.4rem, 9.9vw, 8.3rem); }
 }
 
-/* ---------- Stage ---------- */
+/* ---------- Stage (phone/tablet: stacked) ---------- */
 .hero__stage {
   position: relative;
   display: grid;
-  gap: 1rem;
   margin-top: clamp(1.25rem, 3vw, 2rem);
-  animation: rise 0.9s 0.1s var(--ease) both;
 }
 
-/* Mint feature panel */
+/* Tinted panel with the text */
 .hero__panel {
-  position: relative;
   order: 2;
-  overflow: hidden;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border-radius: var(--r-xl);
-  background: var(--grad-mint);
-  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  background: var(--panel);
+  transition: background-color 0.6s var(--ease);
 }
-.hero__panel::before {            /* soft light in the corner */
-  content: "";
-  position: absolute;
-  inset: -30% -10% auto auto;
-  width: 60%;
-  aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 65%);
-  pointer-events: none;
+.hero__copy { display: grid; max-width: 420px; }
+
+.hero-slide {
+  grid-area: 1 / 1;
+  display: grid;
+  gap: 0.9rem;
+  justify-items: start;
+  align-content: start;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s var(--ease), visibility 0s linear 0.45s;
 }
-.hero__copy { position: relative; display: grid; gap: 1.05rem; max-width: 370px; justify-items: start; }
-.hero__copy h2 { font-size: clamp(2rem, 2.9vw, 2.5rem); color: var(--navy); }
-.hero__copy p { color: rgba(31, 36, 71, 0.78); font-size: 0.95rem; }
-.hero__buttons { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-.hero__copy .hero__note {
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.1s, 0s;
+}
+.hero-slide h2 { font-size: clamp(2rem, 2.9vw, 2.5rem); color: var(--navy); }
+.hero-slide p { color: rgba(31, 36, 71, 0.8); font-size: 0.95rem; max-width: 34ch; }
+
+.hero__note {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 1.1rem;
   font-size: var(--fs-small);
   font-weight: 700;
-  color: #0c6b49;
+  color: var(--navy);
 }
-.hero__note svg { width: 1.2em; height: 1.2em; flex: none; }
+.hero__note svg { width: 1.2em; height: 1.2em; flex: none; color: var(--wa); }
 
-/* ---------- Garment rail ---------- */
+/* Slide controls */
+.hero__controls { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+.hero__arrow {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(31, 36, 71, 0.25);
+  color: var(--navy);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.hero__arrow:hover { background: var(--navy); color: #fff; }
+.hero__arrow svg { width: 16px; height: 16px; }
+.hero__arrow--prev svg { transform: scaleX(-1); }
+.hero__dots { display: flex; gap: 0.5rem; }
+.hero__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(31, 36, 71, 0.25);
+  transition: background var(--t-fast), width var(--t-med) var(--ease);
+}
+.hero__dot[aria-current="true"] { width: 26px; border-radius: 6px; background: var(--navy); }
+
+/* ---------- Model photo ---------- */
 .hero__art {
   position: relative;
   order: 1;
   z-index: 2;
-  width: 100%;
-  max-width: 640px;
-  margin-inline: auto;
-  aspect-ratio: 1 / 0.8;
+  height: clamp(300px, 88vw, 500px);
+  overflow: hidden;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  background: var(--panel);
+  transition: background-color 0.6s var(--ease);
   container-type: inline-size;
-  pointer-events: none;
 }
-.rail {
-  --scale: 1.4;
+.hero__photo {
   position: absolute;
-  top: 6cqw;
+  bottom: 0;
   left: 50%;
-  width: 96cqw;
+  height: 100%;
+  width: auto;
+  max-width: none;
   transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  /* soft fade at the top (hides the cropped neck) and bottom */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 86%, transparent 100%);
 }
-.rail__bar {
-  position: absolute;
-  top: calc(1.2 * var(--scale) * 1cqw);
-  left: 0;
-  right: 0;
-  height: 3px;
-  border-radius: 3px;
-  background: var(--navy);
-  opacity: 0.85;
-}
-.rail__items { position: relative; display: flex; align-items: flex-start; justify-content: center; }
-.hang {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: -4.5cqw;
-  transform-origin: 50% 0;
-  animation: sway 7s ease-in-out infinite alternate;
-}
-.hang:first-child { margin-left: 0; }
-.hang:nth-child(2) { animation-duration: 8s; animation-delay: -2s; }
-.hang:nth-child(3) { animation-duration: 6.5s; animation-delay: -4s; }
-.hang:nth-child(4) { animation-duration: 7.5s; animation-delay: -1s; }
+.hero__photo.is-active { opacity: 1; }
 
-.hanger { width: calc(11 * var(--scale) * 1cqw); aspect-ratio: 120 / 56; height: auto; margin-bottom: calc(-4.2 * var(--scale) * 1cqw); position: relative; z-index: 0; }
-.garment {
-  position: relative;
-  z-index: 1;
-  height: auto;
-  filter: drop-shadow(0 1.6cqw 1.6cqw rgba(31, 36, 71, 0.2));
-}
-.garment--blouse   { width: calc(21 * var(--scale) * 1cqw);   aspect-ratio: 180 / 192; }
-.garment--crop-tops { width: calc(15.5 * var(--scale) * 1cqw); aspect-ratio: 148 / 108; }
-.garment--trousers { width: calc(19.5 * var(--scale) * 1cqw); aspect-ratio: 140 / 226; }
-.garment--skirts   { width: calc(18.5 * var(--scale) * 1cqw); aspect-ratio: 156 / 232; }
-
-/* Floating labels, round button */
+/* Floating labels + round button only on desktop */
 .hero__art .tag,
-.hero__art .round-cta { position: absolute; pointer-events: auto; }
-.hero__art .tag { display: none; z-index: 3; animation: float 5.5s ease-in-out infinite alternate; }
-.hero__art .round-cta {
-  z-index: 4;
-  right: 2%;
-  bottom: -2%;
-  width: clamp(88px, 22cqw, 138px);
-  animation: float 6s -1s ease-in-out infinite alternate;
-}
+.hero__art .round-cta { display: none; }
 
 /* ---------- Category shortcuts ---------- */
 .hero__tiles {
@@ -140,59 +144,74 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.6rem;
+  margin-top: 1rem;
   padding: 0.6rem;
   border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: var(--shadow-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 .tile {
-  position: relative;
   display: grid;
   justify-items: center;
   align-content: center;
-  gap: 0.35rem;
-  padding: 0.7rem 0.3rem 0.6rem;
+  gap: 0.4rem;
+  padding: 0.8rem 0.3rem 0.7rem;
   border-radius: var(--r-md);
-  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast);
 }
-.tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.tile svg { width: 100%; max-width: 54px; height: 50px; }
-.tile span { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; color: var(--navy); }
+.tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.tile svg { width: 34px; height: 34px; color: var(--navy); }
+.tile span { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.03em; color: var(--navy); }
 
-/* ---------- Desktop layout ---------- */
+/* Tablet: slightly larger photo block */
+@media (min-width: 700px) and (max-width: 1020px) {
+  .hero__copy { max-width: 460px; }
+}
+
+/* ---------- Desktop layout (photo overlaps the panel) ---------- */
 @media (min-width: 1021px) {
-  .hero__stage { display: block; height: 560px; }
+  .hero__stage { display: block; height: 580px; margin-top: 0.75rem; }
 
   .hero__panel {
     position: absolute;
     left: 0;
     bottom: 0;
     width: calc(100% - 156px);
-    height: 360px;
+    height: 380px;
     display: flex;
-    align-items: center;
-    padding-left: 3rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.25rem 3rem;
+    border-radius: var(--r-xl);
   }
+  .hero__copy { max-width: 320px; }
+
   .hero__art {
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
     width: calc(100% - 156px);
-    max-width: none;
-    aspect-ratio: auto;
-    margin: 0;
+    height: auto;
+    overflow: visible;
+    border-radius: 0;
+    background: none;
+    pointer-events: none;
   }
-  .rail { --scale: 1; top: 24px; left: 55%; width: 61cqw; }
-  .rail__bar { left: -2cqw; right: -2cqw; }
-  .hang { margin-left: -4.6cqw; }
-  .hanger { margin-bottom: -26px; }
+  .hero__photo {
+    left: 60%;
+    height: min(100%, 54cqw);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 11%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 11%);
+  }
 
-  .hero__art .tag { display: grid; }
-  .hero__art .tag--a { left: 4%; top: 74px; }
-  .hero__art .tag--b { right: 1%; top: 72px; animation-delay: -2s; }
-  .hero__art .tag--c { right: 4%; bottom: 54px; animation-delay: -3.5s; }
-  .hero__art .round-cta { right: 0; bottom: auto; top: 156px; }
+  .hero__art .tag,
+  .hero__art .round-cta { display: grid; position: absolute; pointer-events: auto; }
+  .hero__art .tag { z-index: 3; }
+  .hero__art .tag--a { left: 3%; top: 76px; }
+  .hero__art .tag--b { right: 2%; top: 84px; }
+  .hero__art .tag--c { right: 3%; bottom: 36px; }
+  .hero__art .round-cta { z-index: 4; right: 1.5%; top: 196px; }
 
   .hero__tiles {
     position: absolute;
@@ -200,24 +219,24 @@
     bottom: 0;
     width: 140px;
     grid-template-columns: 1fr;
-    gap: 0.6rem;
-    padding: 0.65rem;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.6rem;
     border-radius: var(--r-xl);
   }
-  .tile { padding: 0.9rem 0.3rem 0.7rem; }
-  .tile svg { max-width: 62px; height: 62px; }
+  .tile { padding: 1.05rem 0.3rem 0.85rem; }
+  .tile svg { width: 40px; height: 40px; }
 }
 
-/* ---------- Motion ---------- */
-@keyframes rise {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes sway {
-  from { transform: rotate(-1.6deg); }
-  to   { transform: rotate(1.6deg); }
-}
-@keyframes float {
-  from { transform: translateY(-5px); }
-  to   { transform: translateY(6px); }
+/* ---------- Smaller desktops / landscape tablets: keep the photo clear of the text ---------- */
+@media (min-width: 1021px) and (max-width: 1199px) {
+  .hero__panel { padding-inline: 2.25rem; }
+  .hero__copy { max-width: 290px; }
+  .hero__photo {
+    left: calc(330px + (100% - 330px) / 2);
+    height: min(100%, 54cqw, calc((100cqw - 350px) / var(--ar, 0.8)));
+  }
+  .hero__art .tag--b,
+  .hero__art .tag--c,
+  .hero__art .round-cta { display: none; }
 }
