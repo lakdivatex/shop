@@ -16,26 +16,143 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- STEP 2 will add the header (logo + nav + basket) here -->
+  <!-- Icons used across the site: <svg><use href="#i-bag"/></svg> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></g></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm5.8 14.05c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12a17 17 0 0 1-1.7-.63c-3-1.3-4.95-4.3-5.1-4.5-.15-.2-1.2-1.6-1.2-3.05s.76-2.16 1.03-2.45c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.5.25.6.85 2.07.92 2.22.08.15.13.33.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.5-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.3 2.38 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.28.1 1.75.82 2.05.97.3.15.5.22.57.35.08.12.08.72-.17 1.4Z"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="#home" aria-label="LAKDIVA TEX Clothing – home">
+        <img src="assets/logo.svg" alt="LAKDIVA TEX Clothing" width="169" height="46">
+      </a>
+
+      <nav class="nav glass" id="site-nav" aria-label="Main menu">
+        <ul>
+          <li><a href="#shop" data-category="trousers">Trousers</a></li>
+          <li><a href="#shop" data-category="blouses">Blouses</a></li>
+          <li><a href="#shop" data-category="crop-tops">Crop Tops</a></li>
+          <li><a href="#shop" data-category="skirts">Skirts</a></li>
+          <li><a href="#how-to-order">How to order</a></li>
+          <li class="nav__wa"><a href="#" data-wa><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg> Chat on WhatsApp</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Basket button – the order basket itself is added in Step 4 -->
+        <a class="icon-btn icon-btn--brand" href="#basket" data-basket-btn aria-label="Open my order basket">
+          <svg aria-hidden="true"><use href="#i-bag"/></svg>
+          <span class="count-bubble" data-basket-count hidden>0</span>
+        </a>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="i-close" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
 
   <main id="main">
-    <!-- Temporary placeholder – replaced by the hero in Step 2 -->
-    <section id="home" class="section" style="min-height:70vh;display:grid;place-items:center;text-align:center">
+
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero">
       <div class="container">
-        <img src="assets/logo.svg" alt="LAKDIVA TEX Clothing" width="520" style="margin-inline:auto;width:min(80vw,520px)">
-        <p style="margin-top:1.5rem;color:var(--ink-soft)">Our new website is coming together – foundation ready.</p>
+        <h1 class="hero__title">
+          <span class="text-gradient">New</span>
+          <span>Season</span>
+          <span>Collection</span>
+        </h1>
+
+        <div class="hero__stage">
+
+          <!-- Feature panel -->
+          <div class="hero__panel">
+            <div class="hero__copy">
+              <span class="pill"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkle"/></svg> New in · Women &amp; Girls</span>
+              <h2>Your everyday edit</h2>
+              <p>Trousers, blouses, crop tops and skirts you'll love wearing. Pick your favourites and order in minutes on WhatsApp.</p>
+              <div class="hero__buttons">
+                <a class="btn" href="#shop">Shop now <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <p class="hero__note"><svg aria-hidden="true"><use href="#i-wa"/></svg> No online payment – you order on WhatsApp</p>
+            </div>
+          </div>
+
+          <!-- Hanging garments + floating labels (decorative) -->
+          <div class="hero__art">
+            <div class="rail" aria-hidden="true">
+              <span class="rail__bar"></span>
+              <div class="rail__items">
+                <div class="hang">
+                  <svg class="hanger"><use href="#hanger"/></svg>
+                  <svg class="garment garment--blouse"><use href="#g-blouse"/></svg>
+                </div>
+                <div class="hang">
+                  <svg class="hanger"><use href="#hanger"/></svg>
+                  <svg class="garment garment--crop-tops"><use href="#g-crop-tops"/></svg>
+                </div>
+                <div class="hang">
+                  <svg class="hanger"><use href="#hanger"/></svg>
+                  <svg class="garment garment--trousers"><use href="#g-trousers"/></svg>
+                </div>
+                <div class="hang">
+                  <svg class="hanger"><use href="#hanger"/></svg>
+                  <svg class="garment garment--skirts"><use href="#g-skirts"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="tag tag--a glass" aria-hidden="true"><small>Sizes</small><strong>XS – XL</strong></div>
+            <div class="tag tag--b glass" aria-hidden="true"><small>For</small><strong>Women &amp; girls</strong></div>
+            <div class="tag tag--c glass" aria-hidden="true"><small>Order</small><strong>Simple, on WhatsApp</strong></div>
+
+            <a class="round-cta" href="#shop" aria-label="Shop the collection">
+              <svg aria-hidden="true"><use href="#i-bag"/></svg>
+              Shop now
+            </a>
+          </div>
+
+          <!-- Category shortcuts (filtering is wired up in Step 3) -->
+          <nav class="hero__tiles" aria-label="Shop by category">
+            <a class="tile tint-trousers"  href="#shop" data-category="trousers"><svg aria-hidden="true"><use href="#g-trousers"/></svg><span>Trousers</span></a>
+            <a class="tile tint-blouses"   href="#shop" data-category="blouses"><svg aria-hidden="true"><use href="#g-blouse"/></svg><span>Blouses</span></a>
+            <a class="tile tint-crop-tops" href="#shop" data-category="crop-tops"><svg aria-hidden="true"><use href="#g-crop-tops"/></svg><span>Crop Tops</span></a>
+            <a class="tile tint-skirts"    href="#shop" data-category="skirts"><svg aria-hidden="true"><use href="#g-skirts"/></svg><span>Skirts</span></a>
+          </nav>
+
+        </div>
       </div>
     </section>
-    <!-- STEP 3: #shop   |  STEP 5: #about, #how-to-order, #contact -->
+
+    <!-- Temporary placeholder so the menu links have somewhere to go – replaced in Step 3 -->
+    <section id="shop" class="section" style="text-align:center">
+      <div class="container">
+        <p class="eyebrow">The collection</p>
+        <p style="margin-top:.75rem;color:var(--ink-soft)">Products are arriving in the next step.</p>
+      </div>
+    </section>
+    <!-- STEP 5: #how-to-order, #about, #contact -->
   </main>
 
   <!-- STEP 5 will add the footer here -->
 
   <script src="js/config.js"></script>
   <script src="data/products.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

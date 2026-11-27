@@ -1,0 +1,114 @@
+/* ==========================================================
+   LAKDIVA TEX – site header (logo, menu, basket button)
+   ========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-block: 0.85rem;
+  transition: background var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease), padding var(--t-med) var(--ease);
+}
+.site-header.is-scrolled,
+.site-header.is-open {
+  background: rgba(245, 246, 255, 0.78);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  backdrop-filter: blur(16px) saturate(1.5);
+  box-shadow: 0 1px 0 var(--line);
+}
+.site-header__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 48px;
+}
+
+/* Logo */
+.brand { display: inline-flex; align-items: center; flex: none; border-radius: 8px; }
+.brand img { height: 46px; width: auto; }
+
+/* Desktop menu – a floating glass pill, like the reference */
+.nav {
+  border-radius: var(--r-pill);
+  padding: 0.3rem;
+}
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav a {
+  display: block;
+  padding: 0.65rem 1.05rem;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--navy);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.nav a:hover { background: rgba(255, 255, 255, 0.9); color: var(--indigo); }
+.nav__wa { display: none; }   /* only shown in the phone menu */
+
+.header-actions { display: flex; align-items: center; gap: 0.6rem; flex: none; }
+.nav-toggle { display: none; }
+
+/* Desktop: keep the menu pill truly centred */
+@media (min-width: 1021px) {
+  .site-header__bar { display: grid; grid-template-columns: 1fr auto 1fr; }
+  .header-actions { justify-self: end; }
+}
+
+/* ---------- Tablet & phone: menu becomes a drop-down sheet ---------- */
+@media (max-width: 1020px) {
+  .nav-toggle { display: inline-grid; }
+  .nav-toggle .i-close { display: none; }
+  .site-header.is-open .nav-toggle .i-menu { display: none; }
+  .site-header.is-open .nav-toggle .i-close { display: block; }
+
+  .nav {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    border-radius: var(--r-lg);
+    background: rgba(255, 255, 255, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top center;
+    transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease), visibility 0s linear var(--t-med);
+  }
+  .site-header.is-open .nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .nav ul { flex-direction: column; align-items: stretch; gap: 0.15rem; }
+  .nav a { padding: 0.95rem 1.1rem; font-size: 0.85rem; border-radius: var(--r-md); }
+  .nav__wa { display: block; margin-top: 0.5rem; }
+  .nav__wa a {
+    display: flex;
+    justify-content: center;
+    padding: 0.8rem 1.4rem;
+    border-radius: var(--r-pill);
+    background: var(--grad-whatsapp);
+    color: #fff;
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .nav__wa a:hover { background: var(--grad-whatsapp); color: #fff; filter: brightness(1.05); }
+}
+
+@media (max-width: 480px) {
+  .brand img { height: 38px; }
+}

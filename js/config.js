@@ -12,6 +12,9 @@ window.LAKDIVA_CONFIG = {
   // Shown before every price. Change to "LKR " or "$" if you prefer.
   currency: "Rs. ",
 
+  // First message when someone taps a general "WhatsApp us" button
+  enquiryGreeting: "Hello LAKDIVA TEX! I have a question about your clothing.",
+
   // Opening line of the order message customers send you
   orderGreeting: "Hello LAKDIVA TEX! I would like to order:",
 

@@ -1,0 +1,223 @@
+/* ==========================================================
+   LAKDIVA TEX – hero section
+   Big headline, a rail of hanging garments, a mint feature
+   panel, floating glass labels, a round call-to-action and
+   category shortcuts (inspired by the reference design).
+   ========================================================== */
+.hero {
+  padding-top: clamp(0.5rem, 2vw, 1.25rem);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+/* ---------- Headline ---------- */
+.hero__title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.22em;
+  font-size: clamp(3rem, 17vw, 5.5rem);
+  line-height: 0.92;
+  text-align: center;
+  animation: rise 0.8s var(--ease) both;
+}
+@media (min-width: 700px) {
+  .hero__title { font-size: clamp(3.4rem, 10.2vw, 8.9rem); }
+}
+
+/* ---------- Stage ---------- */
+.hero__stage {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  animation: rise 0.9s 0.1s var(--ease) both;
+}
+
+/* Mint feature panel */
+.hero__panel {
+  position: relative;
+  order: 2;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--r-xl);
+  background: var(--grad-mint);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.hero__panel::before {            /* soft light in the corner */
+  content: "";
+  position: absolute;
+  inset: -30% -10% auto auto;
+  width: 60%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 65%);
+  pointer-events: none;
+}
+.hero__copy { position: relative; display: grid; gap: 1.05rem; max-width: 370px; justify-items: start; }
+.hero__copy h2 { font-size: clamp(2rem, 2.9vw, 2.5rem); color: var(--navy); }
+.hero__copy p { color: rgba(31, 36, 71, 0.78); font-size: 0.95rem; }
+.hero__buttons { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.hero__copy .hero__note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  color: #0c6b49;
+}
+.hero__note svg { width: 1.2em; height: 1.2em; flex: none; }
+
+/* ---------- Garment rail ---------- */
+.hero__art {
+  position: relative;
+  order: 1;
+  z-index: 2;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 0.8;
+  container-type: inline-size;
+  pointer-events: none;
+}
+.rail {
+  --scale: 1.4;
+  position: absolute;
+  top: 6cqw;
+  left: 50%;
+  width: 96cqw;
+  transform: translateX(-50%);
+}
+.rail__bar {
+  position: absolute;
+  top: calc(1.2 * var(--scale) * 1cqw);
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--navy);
+  opacity: 0.85;
+}
+.rail__items { position: relative; display: flex; align-items: flex-start; justify-content: center; }
+.hang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -4.5cqw;
+  transform-origin: 50% 0;
+  animation: sway 7s ease-in-out infinite alternate;
+}
+.hang:first-child { margin-left: 0; }
+.hang:nth-child(2) { animation-duration: 8s; animation-delay: -2s; }
+.hang:nth-child(3) { animation-duration: 6.5s; animation-delay: -4s; }
+.hang:nth-child(4) { animation-duration: 7.5s; animation-delay: -1s; }
+
+.hanger { width: calc(11 * var(--scale) * 1cqw); aspect-ratio: 120 / 56; height: auto; margin-bottom: calc(-4.2 * var(--scale) * 1cqw); position: relative; z-index: 0; }
+.garment {
+  position: relative;
+  z-index: 1;
+  height: auto;
+  filter: drop-shadow(0 1.6cqw 1.6cqw rgba(31, 36, 71, 0.2));
+}
+.garment--blouse   { width: calc(21 * var(--scale) * 1cqw);   aspect-ratio: 180 / 192; }
+.garment--crop-tops { width: calc(15.5 * var(--scale) * 1cqw); aspect-ratio: 148 / 108; }
+.garment--trousers { width: calc(19.5 * var(--scale) * 1cqw); aspect-ratio: 140 / 226; }
+.garment--skirts   { width: calc(18.5 * var(--scale) * 1cqw); aspect-ratio: 156 / 232; }
+
+/* Floating labels, round button */
+.hero__art .tag,
+.hero__art .round-cta { position: absolute; pointer-events: auto; }
+.hero__art .tag { display: none; z-index: 3; animation: float 5.5s ease-in-out infinite alternate; }
+.hero__art .round-cta {
+  z-index: 4;
+  right: 2%;
+  bottom: -2%;
+  width: clamp(88px, 22cqw, 138px);
+  animation: float 6s -1s ease-in-out infinite alternate;
+}
+
+/* ---------- Category shortcuts ---------- */
+.hero__tiles {
+  order: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  padding: 0.6rem;
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-md);
+}
+.tile {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.35rem;
+  padding: 0.7rem 0.3rem 0.6rem;
+  border-radius: var(--r-md);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.tile svg { width: 100%; max-width: 54px; height: 50px; }
+.tile span { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; color: var(--navy); }
+
+/* ---------- Desktop layout ---------- */
+@media (min-width: 1021px) {
+  .hero__stage { display: block; height: 560px; }
+
+  .hero__panel {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 156px);
+    height: 360px;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+  }
+  .hero__art {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: calc(100% - 156px);
+    max-width: none;
+    aspect-ratio: auto;
+    margin: 0;
+  }
+  .rail { --scale: 1; top: 24px; left: 55%; width: 61cqw; }
+  .rail__bar { left: -2cqw; right: -2cqw; }
+  .hang { margin-left: -4.6cqw; }
+  .hanger { margin-bottom: -26px; }
+
+  .hero__art .tag { display: grid; }
+  .hero__art .tag--a { left: 4%; top: 74px; }
+  .hero__art .tag--b { right: 1%; top: 72px; animation-delay: -2s; }
+  .hero__art .tag--c { right: 4%; bottom: 54px; animation-delay: -3.5s; }
+  .hero__art .round-cta { right: 0; bottom: auto; top: 156px; }
+
+  .hero__tiles {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 140px;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding: 0.65rem;
+    border-radius: var(--r-xl);
+  }
+  .tile { padding: 0.9rem 0.3rem 0.7rem; }
+  .tile svg { max-width: 62px; height: 62px; }
+}
+
+/* ---------- Motion ---------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes sway {
+  from { transform: rotate(-1.6deg); }
+  to   { transform: rotate(1.6deg); }
+}
+@keyframes float {
+  from { transform: translateY(-5px); }
+  to   { transform: translateY(6px); }
+}
