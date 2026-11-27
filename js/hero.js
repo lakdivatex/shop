@@ -18,8 +18,10 @@
   var next = hero.querySelector('[data-hero-next]');
   if (slides.length < 2) return;
 
+  var pauseBtn = hero.querySelector('[data-hero-pause]');
   var current = 0;
   var timer = null;
+  var userPaused = false;   // set by the visible Pause button
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function show(n) {
@@ -36,14 +38,27 @@
   }
 
   function start() {
-    if (reduceMotion || timer) return;
+    if (reduceMotion || userPaused || timer) return;
     timer = setInterval(function () { show(current + 1); }, 7000);
   }
   function stop() { clearInterval(timer); timer = null; }
 
-  if (prev) prev.addEventListener('click', function () { show(current - 1); });
-  if (next) next.addEventListener('click', function () { show(current + 1); });
-  dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
+  // After the visitor changes slide by hand, restart the timer so it doesn't flip straight away
+  function go(n) { show(n); if (timer) { stop(); start(); } }
+  if (prev) prev.addEventListener('click', function () { go(current - 1); });
+  if (next) next.addEventListener('click', function () { go(current + 1); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+
+  // Visible Pause / Play button (only shown when the slides move by themselves)
+  if (pauseBtn && !reduceMotion) {
+    pauseBtn.hidden = false;
+    pauseBtn.addEventListener('click', function () {
+      userPaused = !userPaused;
+      pauseBtn.setAttribute('aria-pressed', String(userPaused));
+      pauseBtn.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+      if (userPaused) stop(); else start();
+    });
+  }
 
   // Pause while the visitor is hovering, using the keyboard, or on another tab
   hero.addEventListener('mouseenter', stop);

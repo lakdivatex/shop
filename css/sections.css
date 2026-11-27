@@ -1,0 +1,278 @@
+/* ==========================================================
+   LAKDIVA TEX – lower sections
+   How to order, About, Contact, footer, floating WhatsApp button
+   Flat and quiet, same palette as the rest of the site.
+   ========================================================== */
+
+/* ---------- How to order ---------- */
+.how { background: var(--sand); }
+
+.how__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.how__step {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding: 1.5rem 1.35rem 1.6rem;
+  border-radius: var(--r-lg);
+}
+.how__num {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 0.6rem;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--navy);
+}
+.how__step p { font-size: var(--fs-small); color: var(--ink-soft); }
+.how__step strong { color: var(--navy); font-weight: 700; }
+
+.how__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+/* ---------- About ---------- */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+.about__copy { display: grid; gap: 1.1rem; justify-items: start; }
+.about__copy h2 { font-size: var(--fs-h2); }
+.about__copy p { max-width: 52ch; color: var(--ink-soft); }
+
+ul.about__facts {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.75rem 2.25rem;
+  margin-top: 0.75rem;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.about__facts li { display: grid; gap: 0.1rem; }
+.about__facts strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.about__facts span { font-size: var(--fs-small); color: var(--ink-soft); }
+
+/* Two tinted tiles with the model photos (cropped at the neck, like the hero) */
+.about__visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+.about__tile {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+}
+.about__tile--mustard { background: var(--mustard-100); }
+.about__tile--taupe   { background: var(--taupe-100); margin-bottom: 2.5rem; }
+.about__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+  /* soft fade at the neck, same idea as the hero photos */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 16%);
+}
+
+/* ---------- Contact ---------- */
+.contact { padding-top: 0; }
+.contact__panel {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border-radius: var(--r-xl);
+  background: var(--mustard-100);
+}
+.contact__intro { display: grid; gap: 1.1rem; justify-items: start; }
+.contact__intro h2 { font-size: var(--fs-h2); }
+.contact__intro p { max-width: 44ch; color: var(--ink-soft); }
+.contact__intro .eyebrow::before { background: var(--navy); }
+
+ul.contact__list {
+  display: grid;
+  margin: 0;
+  padding: 0.4rem 1.25rem;
+  border-radius: var(--r-lg);
+  list-style: none;
+}
+.contact__list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+/* divider between the rows that are showing */
+.contact__list li:not([hidden]) ~ li:not([hidden]) { border-top: 1px solid var(--line); }
+.contact__list li[hidden] { display: none; }
+.contact__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sand);
+  color: var(--navy);
+}
+.contact__icon svg { width: 22px; height: 22px; }
+.contact__list div { display: grid; min-width: 0; }
+.contact__list small {
+  font-size: var(--fs-tiny);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.contact__list a,
+.contact__list span[data-contact] {
+  overflow-wrap: anywhere;
+  font-weight: 700;
+  color: var(--navy);
+}
+.contact__list a { display: block; padding-block: 0.25rem; }
+.contact__list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding-block: clamp(2.5rem, 6vw, 4rem) 5.5rem;   /* room so the floating button never covers the last line */
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.78);
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 2rem clamp(2rem, 6vw, 5rem);
+  padding-bottom: 2.25rem;
+}
+.site-footer__brand { display: grid; gap: 1rem; align-content: start; justify-items: start; }
+.site-footer__brand img { width: 169px; height: auto; }
+.site-footer__brand p { max-width: 34ch; font-size: var(--fs-small); }
+.site-footer__social { display: flex; gap: 0.6rem; }
+.site-footer__social[hidden],
+.site-footer__social a[hidden] { display: none; }
+.site-footer__social a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.site-footer__social a:hover { background: #fff; color: var(--navy); }
+.site-footer__social svg { width: 20px; height: 20px; }
+
+.site-footer__col h3 {
+  margin-bottom: 0.9rem;
+  font-size: var(--fs-tiny);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mustard);
+}
+.site-footer__col ul { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
+.site-footer__col a { display: inline-block; padding-block: 0.2rem; font-size: var(--fs-small); transition: color var(--t-fast); }
+.site-footer__col a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: var(--fs-tiny);
+}
+.site-footer__top { display: inline-flex; align-items: center; gap: 0.4rem; padding-block: 0.6rem; font-weight: 700; color: #fff; }
+.site-footer__top svg { width: 14px; height: 14px; transform: rotate(-90deg); }
+.site-footer__top:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Floating WhatsApp button ---------- */
+.wa-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 250;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 56px;
+  padding: 0 1.25rem 0 1rem;
+  border-radius: var(--r-pill);
+  background: var(--wa);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  transition: background var(--t-fast), transform var(--t-fast) var(--ease), opacity var(--t-med), visibility var(--t-med);
+}
+/* hidden while the top of the page is on screen (set by js/main.js) */
+.wa-float.is-away { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px); }
+.wa-float:hover { background: var(--wa-hover); transform: translateY(-2px); }
+.wa-float svg { width: 26px; height: 26px; flex: none; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1020px) {
+  .how__steps { grid-template-columns: repeat(2, 1fr); }
+  .about__grid,
+  .contact__panel { grid-template-columns: 1fr; }
+  .about__visual { max-width: 520px; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 700px) {
+  /* round icon-only button; the toast message sits above it */
+  .wa-float { right: 1rem; bottom: 1rem; width: 56px; padding: 0; justify-content: center; }
+  .wa-float span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .toast { bottom: 5rem; }
+
+  .site-footer__grid { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .how__steps { grid-template-columns: 1fr; }
+  .how__step { grid-template-columns: auto 1fr; column-gap: 1rem; align-items: start; padding: 1.15rem; }
+  .how__num { grid-row: 1 / span 2; margin: 0; width: 46px; height: 46px; }
+  .how__actions .btn { width: 100%; }
+  .about__facts { grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem 1rem; }
+  .about__facts strong { font-size: 1.2rem; }
+  .about__tile--taupe { margin-bottom: 1.5rem; }
+  .contact__intro .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float,
+  .wa-float.is-away { transition: none; }
+  .wa-float:hover { transform: none; }
+}

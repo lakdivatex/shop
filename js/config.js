@@ -18,7 +18,7 @@ window.LAKDIVA_CONFIG = {
   // Opening line of the order message customers send you
   orderGreeting: "Hello LAKDIVA TEX! I would like to order:",
 
-  // Contact details used in the footer / contact section (step 5)
+  // Contact details shown in the Contact section and footer. Leave a value empty ("") to hide it.
   contact: {
     phoneDisplay: "+94 00 000 0000",
     email: "hello@example.com",

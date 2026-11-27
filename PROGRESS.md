@@ -25,11 +25,28 @@
 - [x] Step 2 – Header (logo, centred menu pill, basket button, phone menu) + hero (big headline, hanging-garments rail, mint panel, glass labels, round CTA, category tiles). Revised once for owner's mockups/palette. Files: css/header.css, css/hero.css, js/hero.js, js/art.js, js/main.js. Removed old styleguide.html (outdated palette)
 - [x] Step 3 – Shop: category chips (with counts) + product cards from data/products.js, hero/menu category links filter the grid, product pop-up with colour + size pick and a working single-item "Order on WhatsApp" button (size required). Files: css/shop.css, js/shop.js, js/order.js (price + WhatsApp message helpers, reused in Step 4)
 - [x] Step 4 – Order basket: "Add to order" in the pop-up, header bag count, slide-in basket drawer (quantity, remove, total, optional name/notes), one "Send order on WhatsApp" button, saved between visits. Files: css/basket.css, js/basket.js; updated js/shop.js, js/order.js, index.html. Tested: add/merge/qty/remove/clear, message text, saved after reload, desktop + phone layouts
-- [ ] Step 5 – About, How to order, Contact, footer, floating WhatsApp button
-- [ ] Step 6 – Polish: mobile pass, accessibility, SEO / share preview, speed
+- [x] Step 5 – How to order (4 steps), About (draft wording + 2 photo tiles), Contact (details from config, WhatsApp button), navy footer (shop/help links, social icons, back to top), floating WhatsApp button. Files: css/sections.css (new); updated index.html, js/main.js. Tested: all WhatsApp links, anchors, footer category links, contact rows show/hide from config, desktop/tablet/phone layouts, floating button vs toast
+- [x] Step 6 – Polish: accessibility (hero Pause/Play button, 44px tap areas, chip-count contrast), share preview (title/description, Open Graph + Twitter tags, 1200x630 share image, touch icon, PNG favicon), noscript message, balanced heading wraps, photos re-encoded ~45% smaller, floating WhatsApp button appears after the hero. Tested at 360/390/430/820/1280px: no horizontal overflow, no contrast failures, all flows pass
 - [ ] Step 7 – GitHub Pages deploy guide + README
+
+## Decisions – Step 5
+- Section order: Shop → How to order (sand band) → About → Contact (mustard-100 panel) → footer (navy). Menu pill unchanged (adding links would crowd 1021–1100px); About/Contact reached from footer + floating button
+- Contact rows (phone, email, location, Instagram, Facebook) are filled from js/config.js `contact`; any empty value hides its row, social icons in the footer appear only when a link is set
+- Floating WhatsApp button: pill with label on ≥701px, round icon on phones; the "added to order" toast moves up on phones so they never overlap; footer has extra bottom padding so the button never covers the last line
+- About wording is a DRAFT written from what the owner told me (Sri Lankan brand; trousers/blouses/crop tops/skirts; WhatsApp ordering). "XS – XL" in About facts is the sample size range – update with real sizes
+- Browser console shows a reminder while the WhatsApp number is still the placeholder
+
+## Decisions – Step 6
+- Hero autoplay kept (7s, pauses on hover/focus/hidden tab) plus a visible Pause/Play button (WCAG 2.2.2); button hidden for visitors who prefer reduced motion (autoplay is off for them)
+- Share preview: og:image/twitter:image need a FULL web address. They contain the placeholder https://YOUR-USERNAME.github.io/lakdiva-tex/ in index.html (3 places) – replace in Step 7 / once the site address is known. og:url and canonical left out on purpose (would also need the address). No JSON-LD (little value for a WhatsApp-only shop)
+- Favicon changed from indigo gradient to flat navy (matches the professional palette); PNG favicon + apple-touch-icon added in assets/img/
+- Product photos re-encoded to WebP q75 (blouse 236→142 KB, crop tee 93→45 KB), visually identical. Originals not kept in the project. Advice for real photos: ~1100px tall WebP/JPG under 200 KB each (README in Step 7)
+- Floating WhatsApp button stays hidden while the hero is >50% on screen, so it never covers the hero/category tiles
+- Test tools: Playwright driving the installed Chrome (real 360px viewport, clock control, keyboard) – replaces the old screenshot-only method
 
 ## Needed from the owner (not blocking until the step shown)
 - Step 2 (done): optional – confirm hero wording; more garment photos (transparent cut-outs work best) can become extra hero slides
 - Step 3: real product photos, names, prices, sizes, colours (sample items used until then)
+- Step 6/7: your GitHub Pages address (e.g. https://yourname.github.io/lakdiva-tex/) for the share preview image
+- Step 5: real email, phone display, address/area, Instagram + Facebook links (sample email/phone currently show in Contact), and confirm/replace the About wording
 - Step 4/5: real WhatsApp number (still the placeholder 94000000000 in js/config.js — orders won't reach you until it is changed) (digits only, e.g. 94771234567), email, address, Instagram/Facebook links

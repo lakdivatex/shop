@@ -4,9 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LAKDIVA TEX Clothing – Trousers, Blouses, Crop Tops &amp; Skirts</title>
-  <meta name="description" content="Modern women's and girls' clothing – trousers, blouses, crop tops and skirts. Pick your favourites and order easily on WhatsApp.">
+  <meta name="description" content="LAKDIVA TEX Clothing – trousers, blouses, crop tops and skirts for women and girls. Choose your size and colour, then send your order on WhatsApp.">
   <meta name="theme-color" content="#faf8f4">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Share preview (WhatsApp, Facebook, Messenger…).
+       IMPORTANT: replace https://YOUR-USERNAME.github.io/lakdiva-tex/ below with the real
+       address of your site (3 places). Share previews need a full web address. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LAKDIVA TEX Clothing">
+  <meta property="og:title" content="LAKDIVA TEX Clothing – Trousers, Blouses, Crop Tops &amp; Skirts">
+  <meta property="og:description" content="Clothing for women and girls. Choose your size and colour, then order on WhatsApp.">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/lakdiva-tex/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="LAKDIVA TEX Clothing – new season collection, order on WhatsApp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://YOUR-USERNAME.github.io/lakdiva-tex/assets/img/og-image.jpg">
 
   <!-- Fonts: Anton (big headlines) + Plus Jakarta Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +37,7 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/shop.css">
   <link rel="stylesheet" href="css/basket.css">
+  <link rel="stylesheet" href="css/sections.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -39,6 +56,13 @@
       <symbol id="c-crop-tops" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11 6 17l4 9 6-2v8h16v-8l6 2 4-9-11-6q-7 5-14 0Z"/></g></symbol>
       <symbol id="c-skirts" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h14l10 32H7Z"/><path d="M17 13h14M21 13 16 40M27 13l5 27"/></g></symbol>
       <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8.500 5.500v13M15.500 5.500v13" fill="none" stroke="currentColor" stroke-width="2.800" stroke-linecap="round"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.500v13l10.500-6.500z" fill="currentColor" stroke="currentColor" stroke-width="1.600" stroke-linejoin="round"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.200-7-11.200a7 7 0 0 1 14 0C19 14.800 12 21 12 21Z"/><circle cx="12" cy="9.800" r="2.500"/></g></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.500" y="3.500" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.200" cy="6.800" r="1.100" fill="currentColor"/></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8.500h2.500V5H14a4 4 0 0 0-4 4v2.500H7.500V15H10v6h3.500v-6H16l.5-3.500h-3V9.500a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     </defs>
   </svg>
 
@@ -113,6 +137,7 @@
                 <button class="hero__dot" type="button" aria-label="Show item 2" aria-current="false"></button>
               </div>
               <button class="hero__arrow hero__arrow--next" type="button" data-hero-next aria-label="Next item"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <button class="hero__arrow hero__pause" type="button" data-hero-pause aria-pressed="false" aria-label="Pause slideshow" hidden><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg></button>
             </div>
           </div>
 
@@ -155,10 +180,108 @@
         <div class="shop__filters" id="shop-filters" role="group" aria-label="Filter by category"></div>
         <p class="shop__count" id="shop-count" aria-live="polite"></p>
         <div class="shop__grid" id="product-grid"></div>
+        <noscript><p class="noscript">Please turn on JavaScript in your browser to see our styles and place an order.</p></noscript>
         <noscript><p class="shop__empty">Please turn on JavaScript to browse the collection, or message us on WhatsApp.</p></noscript>
       </div>
     </section>
-    <!-- STEP 5: #how-to-order, #about, #contact -->
+    <!-- ================= HOW TO ORDER ================= -->
+    <section id="how-to-order" class="section how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How to order</span>
+          <h2 id="how-title">Order in 4 easy steps</h2>
+          <p>No account and no online payment. You choose, we confirm everything with you on WhatsApp.</p>
+        </div>
+
+        <ol class="how__steps" role="list">
+          <li class="how__step surface">
+            <span class="how__num tint-trousers" aria-hidden="true">1</span>
+            <h3>Choose your style</h3>
+            <p>Browse the collection and tap any style to see its colours and sizes.</p>
+          </li>
+          <li class="how__step surface">
+            <span class="how__num tint-blouses" aria-hidden="true">2</span>
+            <h3>Pick size &amp; colour</h3>
+            <p>Select your size and colour, then tap <strong>Add to order</strong>. Add as many items as you like.</p>
+          </li>
+          <li class="how__step surface">
+            <span class="how__num tint-crop-tops" aria-hidden="true">3</span>
+            <h3>Send on WhatsApp</h3>
+            <p>Open your order, add your name and address, then tap <strong>Send order on WhatsApp</strong>. Your order is already written for you.</p>
+          </li>
+          <li class="how__step surface">
+            <span class="how__num tint-skirts" aria-hidden="true">4</span>
+            <h3>We confirm with you</h3>
+            <p>We reply on WhatsApp to confirm your items, delivery and how to pay.</p>
+          </li>
+        </ol>
+
+        <div class="how__actions">
+          <a class="btn btn--primary" href="#shop" data-category="all">Start shopping <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn" href="#contact" data-wa data-wa-text="Hello LAKDIVA TEX! I need help placing an order."><svg aria-hidden="true"><use href="#i-wa"/></svg> Need help ordering?</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__copy">
+          <span class="eyebrow">About us</span>
+          <h2 id="about-title">Everyday clothing for women &amp; girls</h2>
+          <p>LAKDIVA TEX Clothing is a Sri Lankan clothing brand. We sell trousers, blouses, crop tops and skirts that are easy to wear and easy to mix and match.</p>
+          <p>Ordering is simple and personal. Pick what you like, send it to us on WhatsApp, and we sort out the details with you directly.</p>
+          <ul class="about__facts" role="list">
+            <li><strong>4</strong><span>Clothing categories</span></li>
+            <li><strong>XS – XL</strong><span>Sizes</span></li>
+            <li><strong>WhatsApp</strong><span>Easy ordering</span></li>
+          </ul>
+        </div>
+
+        <div class="about__visual" aria-hidden="true">
+          <div class="about__tile about__tile--mustard"><img src="assets/products/blouse-mustard.webp" alt="" width="769" height="1100" loading="lazy" decoding="async"></div>
+          <div class="about__tile about__tile--taupe"><img src="assets/products/crop-tee-taupe.webp" alt="" width="942" height="1100" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__panel">
+          <div class="contact__intro">
+            <span class="eyebrow">Contact</span>
+            <h2 id="contact-title">Questions? Message us</h2>
+            <p>Not sure about a size or a colour, or want to check delivery? WhatsApp is the quickest way to reach us.</p>
+            <a class="btn btn--whatsapp" href="#contact" data-wa><svg aria-hidden="true"><use href="#i-wa"/></svg> Chat on WhatsApp</a>
+          </div>
+
+          <!-- Rows are filled from js/config.js (contact). Empty ones stay hidden. -->
+          <ul class="contact__list surface" role="list">
+            <li data-contact-row="phone" hidden>
+              <span class="contact__icon" aria-hidden="true"><svg><use href="#i-phone"/></svg></span>
+              <div><small>Phone / WhatsApp</small><a data-contact="phone" href="#contact"></a></div>
+            </li>
+            <li data-contact-row="email" hidden>
+              <span class="contact__icon" aria-hidden="true"><svg><use href="#i-mail"/></svg></span>
+              <div><small>Email</small><a data-contact="email" href="#contact"></a></div>
+            </li>
+            <li data-contact-row="address" hidden>
+              <span class="contact__icon" aria-hidden="true"><svg><use href="#i-pin"/></svg></span>
+              <div><small>Location</small><span data-contact="address"></span></div>
+            </li>
+            <li data-contact-row="instagram" hidden>
+              <span class="contact__icon" aria-hidden="true"><svg><use href="#i-instagram"/></svg></span>
+              <div><small>Instagram</small><a data-contact="instagram" href="#contact" target="_blank" rel="noopener">Follow us</a></div>
+            </li>
+            <li data-contact-row="facebook" hidden>
+              <span class="contact__icon" aria-hidden="true"><svg><use href="#i-facebook"/></svg></span>
+              <div><small>Facebook</small><a data-contact="facebook" href="#contact" target="_blank" rel="noopener">Visit our page</a></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Product details pop-up (filled in by js/shop.js) -->
@@ -232,7 +355,52 @@
     <button type="button" id="toast-action" hidden></button>
   </div>
 
-  <!-- STEP 5 will add the footer here -->
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="assets/logo-white.svg" alt="LAKDIVA TEX Clothing" width="169" height="46" loading="lazy">
+          <p>Trousers, blouses, crop tops and skirts for women &amp; girls.</p>
+          <div class="site-footer__social" data-contact-row="social" hidden>
+            <a data-contact="instagram" href="#" target="_blank" rel="noopener" aria-label="LAKDIVA TEX on Instagram" hidden><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a data-contact="facebook" href="#" target="_blank" rel="noopener" aria-label="LAKDIVA TEX on Facebook" hidden><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          </div>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Shop categories">
+          <h3>Shop</h3>
+          <ul role="list">
+            <li><a href="#shop" data-category="trousers">Trousers</a></li>
+            <li><a href="#shop" data-category="blouses">Blouses</a></li>
+            <li><a href="#shop" data-category="crop-tops">Crop Tops</a></li>
+            <li><a href="#shop" data-category="skirts">Skirts</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-label="Help">
+          <h3>Help</h3>
+          <ul role="list">
+            <li><a href="#how-to-order">How to order</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" data-wa>WhatsApp us</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; <span data-year>2026</span> LAKDIVA TEX Clothing. No online payment &ndash; orders are confirmed on WhatsApp.</p>
+        <a class="site-footer__top" href="#home">Back to top <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button (number comes from js/config.js) -->
+  <a class="wa-float" href="#contact" data-wa aria-label="Chat with us on WhatsApp">
+    <svg aria-hidden="true"><use href="#i-wa"/></svg>
+    <span>WhatsApp us</span>
+  </a>
 
   <script src="js/config.js"></script>
   <script src="data/products.js"></script>

@@ -5,8 +5,11 @@
 
 /* ---------- Filter chips ---------- */
 .shop__filters { display: flex; flex-wrap: wrap; gap: 0.55rem; }
-.chip small { font-size: 0.72rem; font-weight: 700; opacity: 0.65; }
+.chip small { font-size: 0.72rem; font-weight: 700; color: var(--ink-soft); }
+.chip[aria-pressed="true"] small { color: rgba(255, 255, 255, 0.85); }
 .shop__count { margin-block: 1rem 1.25rem; font-size: var(--fs-small); color: var(--ink-soft); }
+
+.noscript { padding: 1.25rem; border-radius: var(--r-md); background: var(--sand); color: var(--ink-soft); }
 
 /* ---------- Grid ---------- */
 .shop__grid {
