@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <link rel="stylesheet" href="css/basket.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -59,11 +61,11 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Basket button – the order basket itself is added in Step 4 -->
-        <a class="icon-btn icon-btn--brand" href="#basket" data-basket-btn aria-label="Open my order basket">
+        <!-- Order basket button (opens the basket drawer, see js/basket.js) -->
+        <button class="icon-btn icon-btn--brand" type="button" data-basket-btn aria-haspopup="dialog" aria-label="Open my order basket">
           <svg aria-hidden="true"><use href="#i-bag"/></svg>
           <span class="count-bubble" data-basket-count hidden>0</span>
-        </a>
+        </button>
         <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
           <svg class="i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
           <svg class="i-close" aria-hidden="true"><use href="#i-close"/></svg>
@@ -141,22 +143,104 @@
       </div>
     </section>
 
-    <!-- Temporary placeholder so the menu links have somewhere to go – replaced in Step 3 -->
-    <section id="shop" class="section" style="text-align:center">
+    <!-- ================= SHOP ================= -->
+    <section id="shop" class="section shop" aria-labelledby="shop-title">
       <div class="container">
-        <p class="eyebrow">The collection</p>
-        <p style="margin-top:.75rem;color:var(--ink-soft)">Products are arriving in the next step.</p>
+        <div class="section-head">
+          <span class="eyebrow">The collection</span>
+          <h2 id="shop-title">Shop our styles</h2>
+          <p>Tap a style to see sizes and colours, then send your order to us on WhatsApp.</p>
+        </div>
+
+        <div class="shop__filters" id="shop-filters" role="group" aria-label="Filter by category"></div>
+        <p class="shop__count" id="shop-count" aria-live="polite"></p>
+        <div class="shop__grid" id="product-grid"></div>
+        <noscript><p class="shop__empty">Please turn on JavaScript to browse the collection, or message us on WhatsApp.</p></noscript>
       </div>
     </section>
     <!-- STEP 5: #how-to-order, #about, #contact -->
   </main>
+
+  <!-- Product details pop-up (filled in by js/shop.js) -->
+  <dialog class="pdialog" id="product-dialog" aria-labelledby="pd-title" tabindex="-1">
+    <div class="pdialog__inner">
+      <button class="icon-btn pdialog__close" type="button" data-close aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+      <div class="pdialog__media" id="pd-media"></div>
+      <div class="pdialog__info">
+        <span class="pd__cat" id="pd-cat"></span>
+        <h3 class="pd__title" id="pd-title"></h3>
+        <p class="pd__price" id="pd-price"></p>
+        <p class="pd__blurb" id="pd-blurb"></p>
+        <dl class="pd__specs" id="pd-specs"></dl>
+        <fieldset class="opt" id="pd-colors-wrap">
+          <legend>Colour: <span id="pd-color-name"></span></legend>
+          <div class="opt__row" id="pd-colors"></div>
+        </fieldset>
+        <fieldset class="opt">
+          <legend>Size</legend>
+          <div class="opt__row" id="pd-sizes"></div>
+        </fieldset>
+        <p class="pd__error" id="pd-error" role="alert" hidden>Please choose a size first.</p>
+        <div class="pd__buy">
+          <div class="qty" role="group" aria-label="Quantity">
+            <button type="button" id="pd-minus" aria-label="Decrease quantity">&minus;</button>
+            <output id="pd-qty" aria-live="polite">1</output>
+            <button type="button" id="pd-plus" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn btn--primary" type="button" id="pd-add">Add to order</button>
+        </div>
+        <a class="btn btn--block pd__wa" id="pd-order" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Order this item on WhatsApp</a>
+        <p class="pd__note">No online payment – we confirm price, delivery and payment with you on WhatsApp.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Order basket (slide-out) – filled in by js/basket.js -->
+  <dialog class="drawer" id="basket-dialog" aria-labelledby="basket-title" tabindex="-1">
+    <div class="drawer__inner">
+      <header class="drawer__head">
+        <h2 id="basket-title">Your order</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Close basket"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+      </header>
+
+      <div class="drawer__empty" id="basket-empty">
+        <p><strong>Your basket is empty</strong></p>
+        <p>Browse our styles and add your favourites.</p>
+        <button class="btn btn--primary" type="button" id="basket-browse">Browse styles</button>
+      </div>
+
+      <ul class="drawer__list" id="basket-list"></ul>
+
+      <div class="drawer__foot" id="basket-foot">
+        <div class="drawer__total"><span>Total</span><strong id="basket-total">Rs. 0</strong></div>
+        <div class="drawer__fields">
+          <label for="basket-name">Your name <small>(optional)</small></label>
+          <input id="basket-name" type="text" autocomplete="name" maxlength="80">
+          <label for="basket-notes">Delivery address or notes <small>(optional)</small></label>
+          <textarea id="basket-notes" rows="2" maxlength="300" placeholder="Address, preferred time to contact…"></textarea>
+        </div>
+        <a class="btn btn--whatsapp btn--block" id="basket-send" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Send order on WhatsApp</a>
+        <p class="drawer__note">No online payment – we confirm price, delivery and payment with you on WhatsApp.</p>
+        <button class="drawer__clear" type="button" id="basket-clear">Clear basket</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Small confirmation message -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span id="toast-text"></span>
+    <button type="button" id="toast-action" hidden></button>
+  </div>
 
   <!-- STEP 5 will add the footer here -->
 
   <script src="js/config.js"></script>
   <script src="data/products.js"></script>
   <script src="js/art.js"></script>
+  <script src="js/order.js"></script>
   <script src="js/main.js"></script>
   <script src="js/hero.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/basket.js"></script>
 </body>
 </html>
