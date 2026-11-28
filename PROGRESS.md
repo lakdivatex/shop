@@ -27,7 +27,7 @@
 - [x] Step 4 – Order basket: "Add to order" in the pop-up, header bag count, slide-in basket drawer (quantity, remove, total, optional name/notes), one "Send order on WhatsApp" button, saved between visits. Files: css/basket.css, js/basket.js; updated js/shop.js, js/order.js, index.html. Tested: add/merge/qty/remove/clear, message text, saved after reload, desktop + phone layouts
 - [x] Step 5 – How to order (4 steps), About (draft wording + 2 photo tiles), Contact (details from config, WhatsApp button), navy footer (shop/help links, social icons, back to top), floating WhatsApp button. Files: css/sections.css (new); updated index.html, js/main.js. Tested: all WhatsApp links, anchors, footer category links, contact rows show/hide from config, desktop/tablet/phone layouts, floating button vs toast
 - [x] Step 6 – Polish: accessibility (hero Pause/Play button, 44px tap areas, chip-count contrast), share preview (title/description, Open Graph + Twitter tags, 1200x630 share image, touch icon, PNG favicon), noscript message, balanced heading wraps, photos re-encoded ~45% smaller, floating WhatsApp button appears after the hero. Tested at 360/390/430/820/1280px: no horizontal overflow, no contrast failures, all flows pass
-- [ ] Step 7 – GitHub Pages deploy guide + README
+- [x] Step 7 – README.md: pre-launch checklist, folder map, everyday edits (config, products, photos, banner, About, logo/colours), GitHub Pages deploy (browser upload + Git), updating, quick phone test, troubleshooting, how it works. Verified: every file/setting named in the README exists; a clean copy loads with no missing files or JS errors; following the README to add a product / change number / contact works
 
 ## Decisions – Step 5
 - Section order: Shop → How to order (sand band) → About → Contact (mustard-100 panel) → footer (navy). Menu pill unchanged (adding links would crowd 1021–1100px); About/Contact reached from footer + floating button
@@ -38,11 +38,18 @@
 
 ## Decisions – Step 6
 - Hero autoplay kept (7s, pauses on hover/focus/hidden tab) plus a visible Pause/Play button (WCAG 2.2.2); button hidden for visitors who prefer reduced motion (autoplay is off for them)
-- Share preview: og:image/twitter:image need a FULL web address. They contain the placeholder https://YOUR-USERNAME.github.io/lakdiva-tex/ in index.html (3 places) – replace in Step 7 / once the site address is known. og:url and canonical left out on purpose (would also need the address). No JSON-LD (little value for a WhatsApp-only shop)
+- Share preview: og:image/twitter:image need a FULL web address. They contain the placeholder https://YOUR-USERNAME.github.io/lakdiva-tex/ in index.html (2 lines: og:image and twitter:image) – replace in Step 7 / once the site address is known. og:url and canonical left out on purpose (would also need the address). No JSON-LD (little value for a WhatsApp-only shop)
 - Favicon changed from indigo gradient to flat navy (matches the professional palette); PNG favicon + apple-touch-icon added in assets/img/
 - Product photos re-encoded to WebP q75 (blouse 236→142 KB, crop tee 93→45 KB), visually identical. Originals not kept in the project. Advice for real photos: ~1100px tall WebP/JPG under 200 KB each (README in Step 7)
 - Floating WhatsApp button stays hidden while the hero is >50% on screen, so it never covers the hero/category tiles
 - Test tools: Playwright driving the installed Chrome (real 360px viewport, clock control, keyboard) – replaces the old screenshot-only method
+
+## Decisions – Step 7
+- GitHub Pages policy flag: GitHub's docs say Pages is not allowed as free hosting to run an online business / e-commerce site or a site primarily facilitating commercial transactions. This site takes no payment but is a shop-window, so it is a grey area. Owner chose GitHub Pages, so the README gives the GitHub steps, states the risk plainly, and notes the same static files run on other free static hosts (only the share-preview address changes). Also: Pages on a free GitHub account needs a PUBLIC repository
+- Deliberately NOT added: 404 page (relative paths break on nested URLs; single-page site), sitemap/robots/canonical (need the final address), build step (keeps the owner's edit-and-upload workflow)
+- Pop-up "Order this item on WhatsApp" link is "#" until a size is chosen (clicking first shows the size message) – by design
+
+## PROJECT STATUS: all 7 steps complete. Remaining items are the owner's content (see below)
 
 ## Needed from the owner (not blocking until the step shown)
 - Step 2 (done): optional – confirm hero wording; more garment photos (transparent cut-outs work best) can become extra hero slides
